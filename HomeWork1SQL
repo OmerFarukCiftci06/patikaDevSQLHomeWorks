@@ -1,0 +1,237 @@
+PATİKADEV SQL HOMEWORK 1;
+
+SELECT title, description FROM film; -- 1-)TASK film tablosunda bulunan title ve description sütunlarındaki verileri sıralayınız.
+
+SELECT * FROM film WHERE length > 60 AND length < 75; -- 2-) TASK film tablosunda bulunan tüm sütunlardaki verileri film uzunluğu (length) 60 dan büyük VE 75 ten küçük olma koşullarıyla sıralayınız.
+
+SELECT * FROM film WHERE rental_rate = 0.99 AND replacement_cost = 12.99 OR replacement_cost = 28.99; -- 3-) TASK film tablosunda bulunan tüm sütunlardaki verileri rental_rate 0.99 VE replacement_cost 12.99 VEYA 28.99 olma koşullarıyla sıralayınız.
+
+SELECT last_name FROM customer WHERE first_name = 'Mary'; --Answer is Smith 4-) TASK customer tablosunda bulunan first_name sütunundaki değeri 'Mary' olan müşterinin last_name sütunundaki değeri nedir?
+
+SELECT * FROM film WHERE NOT (length > 50) AND NOT (rental_rate = 2.99 OR rental_rate = 4.99); -- 5-) TASK film tablosundaki uzunluğu(length) 50 ten büyük OLMAYIP aynı zamanda rental_rate değeri 2.99 veya 4.99 OLMAYAN verileri sıralayınız
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV SQL HOMEWORK 2;
+
+SELECT * FROM film WHERE replacement_cost BETWEEN 12.99 AND 16.99; -- 1-) TASK film tablosunda bulunan tüm sütunlardaki verileri replacement cost değeri 12.99 dan büyük eşit ve 16.99 küçük olma koşuluyla sıralayınız ( BETWEEN - AND yapısını kullanınız.)
+
+SELECT first_name, last_name FROM actor WHERE first_name IN ('Penelope', 'Nick', 'Ed'); -- 2-) actor tablosunda bulunan first_name ve last_name sütunlardaki verileri first_name 'Penelope' veya 'Nick' veya 'Ed' değerleri olması koşuluyla sıralayınız. ( IN operatörünü kullanınız.)
+
+SELECT * FROM film WHERE rental_rate IN (0.99, 2.99, 4.99) AND replacement_cost IN (12.99, 15.99, 28.99); -- 3-) film tablosunda bulunan tüm sütunlardaki verileri rental_rate 0.99, 2.99, 4.99 VE replacement_cost 12.99, 15.99, 28.99 olma koşullarıyla sıralayınız. ( IN operatörünü kullanınız.)
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV SQL HOMEWORK 3;
+
+
+SELECT country FROM country WHERE country LIKE 'A%' AND country LIKE '%a'; -- 1-) TASK: country tablosunda bulunan country sütunundaki ülke isimlerinden 'A' karakteri ile başlayıp 'a' karakteri ile sonlananları sıralayınız.
+
+SELECT country FROM country  WHERE  LENGTH(country) > 5 AND country LIKE '%n'; -- 2-) TASK :country tablosunda bulunan country sütunundaki ülke isimlerinden en az 6 karakterden oluşan ve sonu 'n' karakteri ile sonlananları sıralayınız.
+
+SELECT title FROM film WHERE title ILIKE '%T%T%T%T%'; -- 3-) TASK: film tablosunda bulunan title sütunundaki film isimlerinden en az 4 adet büyük ya da küçük harf farketmesizin 'T' karakteri içeren film isimlerini sıralayınız.
+
+SELECT * FROM film WHERE title LIKE 'C%' and rental_rate = 2.99 AND length > 90; -- 4-) TASK: film tablosunda bulunan tüm sütunlardaki verilerden title 'C' karakteri ile başlayan ve uzunluğu (length) 90 dan büyük olan ve rental_rate 2.99 olan verileri sıralayınız.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV SQL HOMEWORK 4;
+
+SELECT DISTINCT replacement_cost FROM film; -- 1-) TASK: film tablosunda bulunan replacement_cost sütununda bulunan birbirinden farklı değerleri sıralayınız.
+
+SELECT COUNT (DISTINCT replacement_cost) FROM film; -- 2-) TASK: film tablosunda bulunan replacement_cost sütununda birbirinden farklı kaç tane veri vardır?
+
+SELECT COUNT(*) FROM film WHERE rating = 'G' AND title LIKE 'T%'; -- 3-) TASK: film tablosunda bulunan film isimlerinde (title) kaç tanesini T karakteri ile başlar ve aynı zamanda rating 'G' ye eşittir?
+
+SELECT COUNT(country) FROM country WHERE country ILIKE '_____'; -- 4-) TASK: country tablosunda bulunan ülke isimlerinden (country) kaç tanesi 5 karakterden oluşmaktadır?
+
+SELECT COUNT(city) FROM city WHERE city ILIKE '%R'; -- 5-) TASK: city tablosundaki şehir isimlerinin kaç tanesi 'R' veya r karakteri ile biter?
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV SQL HOMEWORK 5;
+
+SELECT * FROM film WHERE title LIKE '%n' ORDER BY length DESC LIMIT 5; -- 1-) TASK: film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en uzun (length) 5 filmi sıralayınız.
+
+SELECT * FROM film WHERE title LIKE '%n' ORDER BY length ASC OFFSET 5 LIMIT 5; -- 2-) TASK: film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en kısa (length) ikinci(6,7,8,9,10) 5 filmi(6,7,8,9,10) sıralayınız.
+
+SELECT * FROM customer WHERE store_id = 1 ORDER BY last_name ASC LIMIT 4; -- 3-) TASK: customer tablosunda bulunan last_name sütununa göre azalan yapılan sıralamada store_id 1 olmak koşuluyla ilk 4 veriyi sıralayınız.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV HOMEWORK SQL 6;
+
+SELECT AVG(rental_rate) FROM film; -- 1-) TASK: film tablosunda bulunan rental_rate sütunundaki değerlerin ortalaması nedir?
+
+SELECT COUNT(*) FROM film WHERE title LIKE 'C%'; -- 2-) TASK: film tablosunda bulunan filmlerden kaç tanesi 'C' karakteri ile başlar?
+
+SELECT MAX(length) FROM film WHERE rental_rate = 0.99; -- 3-) TASK: film tablosunda bulunan filmlerden rental_rate değeri 0.99 a eşit olan en uzun (length) film kaç dakikadır?
+
+SELECT COUNT(DISTINCT replacement_cost) FROM film WHERE length > 150; -- 4-) TASK: film tablosunda bulunan filmlerin uzunluğu 150 dakikadan büyük olanlarına ait kaç farklı replacement_cost değeri vardır?
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV HOMEWORK SQL 7;
+
+SELECT rating FROM film GROUP BY rating; -- 1-) TASK: film tablosunda bulunan filmleri rating değerlerine göre gruplayınız.
+
+SELECT replacement_cost, COUNT(*) FROM film GROUP BY replacement_cost HAVING COUNT(*) > 50; -- 2-) TASK: film tablosunda bulunan filmleri replacement_cost sütununa göre grupladığımızda film sayısı 50 den fazla olan replacement_cost değerini ve karşılık gelen film sayısını sıralayınız.
+
+SELECT store_id, COUNT(*) FROM customer GROUP BY store_id; -- 3-) TASK: 3. customer tablosunda bulunan store_id değerlerine karşılık gelen müşteri sayılarını nelerdir?
+
+SELECT country_id, COUNT(*) FROM city GROUP BY country_id ORDER BY COUNT(*) DESC LIMIT 1; -- 4-) TASK: city tablosunda bulunan şehir verilerini country_id sütununa göre gruplandırdıktan sonra en fazla şehir sayısı barındıran country_id bilgisini ve şehir sayısını paylaşınız.
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV HOMEWORK SQL 8
+
+CREATE TABLE employee(
+    id INT,
+    name VARCHAR(50),
+    birthday DATE,
+    email VARCHAR(100)
+); -- 1-) TASK: test veritabanınızda employee isimli sütun bilgileri id(INTEGER), name VARCHAR(50), birthday DATE, email VARCHAR(100)
+
+insert into employee (id, first_name, birthday, email) values (1, 'Horten', '1943-12-02', 'hkyllford0@google.it');
+insert into employee (id, first_name, birthday, email) values (2, 'Ben', '1911-03-11', 'bdenver1@hao123.com');
+insert into employee (id, first_name, birthday, email) values (3, 'Royall', '1909-10-08', 'rcouvet2@admin.ch');
+insert into employee (id, first_name, birthday, email) values (4, 'Agna', '1936-11-30', 'amalling3@ted.com');
+insert into employee (id, first_name, birthday, email) values (5, 'Peirce', '1959-02-26', 'pgault4@nationalgeographic.com');
+insert into employee (id, first_name, birthday, email) values (6, 'Effie', '1972-12-02', 'edougal5@answers.com');
+insert into employee (id, first_name, birthday, email) values (7, 'Whitby', '1960-10-02', 'wjohananov6@360.cn');
+insert into employee (id, first_name, birthday, email) values (8, 'Torre', '1990-11-28', 'tsheran7@aboutads.info');
+insert into employee (id, first_name, birthday, email) values (9, 'Faith', '1951-11-12', 'fcapoun8@live.com');
+insert into employee (id, first_name, birthday, email) values (10, 'Jerrine', '1918-09-13', 'jentres9@deliciousdays.com');
+insert into employee (id, first_name, birthday, email) values (11, 'Nicky', '1983-03-20', 'nleapa@etsy.com');
+insert into employee (id, first_name, birthday, email) values (12, 'Ario', '1935-08-25', 'ascrubyb@usa.gov');
+insert into employee (id, first_name, birthday, email) values (13, 'Tris', '1940-05-29', 'tmacclayc@dot.gov');
+insert into employee (id, first_name, birthday, email) values (14, 'Llywellyn', '1967-06-26', 'lborsnalld@scribd.com');
+insert into employee (id, first_name, birthday, email) values (15, 'Cairistiona', '1916-12-04', 'cprotte@wordpress.com');
+insert into employee (id, first_name, birthday, email) values (16, 'Faulkner', '1922-01-24', 'fcherrettf@indiatimes.com');
+insert into employee (id, first_name, birthday, email) values (17, 'Doy', '1989-09-30', 'dhaspineallg@twitter.com');
+insert into employee (id, first_name, birthday, email) values (18, 'Ambrosio', '1949-05-11', 'atorrieh@foxnews.com');
+insert into employee (id, first_name, birthday, email) values (19, 'Daveen', '1980-11-01', 'ddzenisenkai@cbsnews.com');
+insert into employee (id, first_name, birthday, email) values (20, 'Matti', '1931-04-29', 'mpepperdj@newsvine.com');
+insert into employee (id, first_name, birthday, email) values (21, 'Nicoline', '1984-11-09', 'nbatesk@dot.gov');
+insert into employee (id, first_name, birthday, email) values (22, 'Maggi', '1980-10-14', 'mhadawayl@sohu.com');
+insert into employee (id, first_name, birthday, email) values (23, 'Lorine', '1930-03-31', 'lrannm@cdbaby.com');
+insert into employee (id, first_name, birthday, email) values (24, 'Gianina', '1924-02-10', 'gmiddelln@tamu.edu');
+insert into employee (id, first_name, birthday, email) values (25, 'Frederico', '1911-05-19', 'fstraneoo@de.vu');
+insert into employee (id, first_name, birthday, email) values (26, 'Cordey', '1986-05-13', 'cyakuntzovp@booking.com');
+insert into employee (id, first_name, birthday, email) values (27, 'Xavier', '1970-09-25', 'xocoskerryq@youtube.com');
+insert into employee (id, first_name, birthday, email) values (28, 'Raddie', '1917-12-22', 'rstqueintainr@archive.org');
+insert into employee (id, first_name, birthday, email) values (29, 'Vita', '1956-02-18', 'vdrinkales@cdbaby.com');
+insert into employee (id, first_name, birthday, email) values (30, 'Muhammad', '1967-06-20', 'mlippittt@alexa.com');
+insert into employee (id, first_name, birthday, email) values (31, 'Ive', '1991-05-22', 'istlouisu@merriam-webster.com');
+insert into employee (id, first_name, birthday, email) values (32, 'Darcey', '1936-09-08', 'dwhytockv@mayoclinic.com');
+insert into employee (id, first_name, birthday, email) values (33, 'Michaella', '1920-12-18', 'mphilipetw@webeden.co.uk');
+insert into employee (id, first_name, birthday, email) values (34, 'Goraud', '1918-11-23', 'gbrewertonx@ocn.ne.jp');
+insert into employee (id, first_name, birthday, email) values (35, 'Ham', '1927-04-17', 'hbittlesony@ucoz.com');
+insert into employee (id, first_name, birthday, email) values (36, 'Hamlen', '1933-09-02', 'hdutchburnz@sogou.com');
+insert into employee (id, first_name, birthday, email) values (37, 'Riane', '1949-08-13', 'rblunt10@cam.ac.uk');
+insert into employee (id, first_name, birthday, email) values (38, 'Christi', '1923-09-17', 'cwhistance11@chron.com');
+insert into employee (id, first_name, birthday, email) values (39, 'Marleah', '1966-07-07', 'mgrube12@seesaa.net');
+insert into employee (id, first_name, birthday, email) values (40, 'Zedekiah', '1977-11-11', 'zweatherburn13@reuters.com');
+insert into employee (id, first_name, birthday, email) values (41, 'Wilbur', '1964-04-23', 'wtupp14@alibaba.com');
+insert into employee (id, first_name, birthday, email) values (42, 'Emile', '1973-08-16', 'earchanbault15@technorati.com');
+insert into employee (id, first_name, birthday, email) values (43, 'Gabey', '1973-07-22', 'gswanwick16@github.io');
+insert into employee (id, first_name, birthday, email) values (44, 'Brenn', '1939-10-12', 'bwalkley17@netvibes.com');
+insert into employee (id, first_name, birthday, email) values (45, 'Caren', '1994-10-09', 'cstoeckle18@pagesperso-orange.fr');
+insert into employee (id, first_name, birthday, email) values (46, 'Erl', '1996-05-21', 'epetrussi19@networksolutions.com');
+insert into employee (id, first_name, birthday, email) values (47, 'Ozzie', '1906-12-08', 'ogillcrist1a@engadget.com');
+insert into employee (id, first_name, birthday, email) values (48, 'Silvana', '1923-08-10', 'sshearer1b@ning.com');
+insert into employee (id, first_name, birthday, email) values (49, 'Karisa', '1959-02-19', 'kaskem1c@usda.gov');
+insert into employee (id, first_name, birthday, email) values (50, 'Wit', '1901-10-17', 'wsiddaley1d@slideshare.net'); -- 2-) TASK: Oluşturduğumuz employee tablosuna 'Mockaroo' servisini kullanarak 50 adet veri ekleyelim.
+
+UPDATE employee SET first_name = 'XXX' WHERE id BETWEEN 5 AND 10; -- 3-) TASK: Sütunların her birine göre diğer sütunları güncelleyecek 5 adet UPDATE işlemi yapalım.
+
+DELETE FROM employee WHERE id BETWEEN 40 AND 45; -- 4-) TASK: Sütunların her birine göre ilgili satırı silecek 5 adet DELETE işlemi yapalım.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV HOMEWORK SQL 9;
+
+SELECT city, country FROM city
+INNER JOIN country
+ON country.country_id = city.country_id; -- 1-) TASK: city tablosu ile country tablosunda bulunan şehir (city) ve ülke (country) isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+
+SELECT payment_id, first_name, last_name FROM customer
+INNER JOIN payment
+ON customer.customer_id = payment.customer_id; -- 2-) TASK: customer tablosu ile payment tablosunda bulunan payment_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+
+SELECT rental_id, first_name, last_name FROM customer
+INNER JOIN rental
+ON customer.customer_id = rental.customer_id; -- 3-) TASK: customer tablosu ile rental tablosunda bulunan rental_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz INNER JOIN sorgusunu yazınız.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV HOMEWORK SQL 10;
+
+SELECT city.city, country.country FROM city
+LEFT JOIN country
+ON country.country_id = city.country_id; -- 1-) TASK: city tablosu ile country tablosunda bulunan şehir (city) ve ülke (country) isimlerini birlikte görebileceğimiz LEFT JOIN sorgusunu yazınız.
+
+SELECT payment.payment_id, customer.first_name, customer.last_name FROM customer
+RIGHT JOIN payment
+ON payment.customer_id = customer.customer_id; -- 2-) TASK: customer tablosu ile payment tablosunda bulunan payment_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz RIGHT JOIN sorgusunu yazınız.
+
+SELECT rental.rental_id, customer.first_name, customer.last_name FROM customer
+FULL JOIN rental
+ON rental.customer_id = customer.customer_id; -- 3-) TASK: customer tablosu ile rental tablosunda bulunan rental_id ile customer tablosundaki first_name ve last_name isimlerini birlikte görebileceğimiz FULL JOIN sorgusunu yazınız.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV HOMEWORK SQL 11;
+
+İlk 3 sorguyu tekrar eden veriler için de yapalım.
+
+(SELECT first_name FROM actor)
+UNION
+(SELECT first_name FROM customer);  -- 1.1-) TASK: actor ve customer tablolarında bulunan first_name sütunları için tüm verileri sıralayalım.
+
+(SELECT first_name FROM actor)
+UNION ALL
+(SELECT first_name FROM customer);  -- 1.2-) TASK: actor ve customer tablolarında bulunan first_name sütunları için tekrar eden veriler dahil tüm verileri de sıralayalım.
+
+(SELECT first_name FROM actor)
+INTERSECT
+(SELECT first_name FROM customer); -- 2.1-) TASK: actor ve customer tablolarında bulunan first_name sütunları için kesişen verileri sıralayalım.
+
+(SELECT first_name FROM actor)
+INTERSECT ALL
+(SELECT first_name FROM customer); -- 2.2-) TASK: actor ve customer tablolarında bulunan first_name sütunları için kesişen ve tekrar eden verileri sıralayalım.
+
+(SELECT first_name FROM actor)
+EXCEPT
+(SELECT first_name FROM customer); -- 3.1-) TASK: actor ve customer tablolarında bulunan first_name sütunları için ilk tabloda bulunan ancak ikinci tabloda bulunmayan verileri sıralayalım.
+
+(SELECT first_name FROM actor)
+EXCEPT ALL
+(SELECT first_name FROM customer); -- 3.2) TASK: actor ve customer tablolarında bulunan first_name sütunları için ilk tabloda bulunan ancak ikinci tabloda bulunmayan ancak tekrar eden verileri sıralayalım.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+PATİKADEV HOMEWORK SQL 12;
+
+SELECT COUNT(*) FROM film WHERE length > ( SELECT AVG(length) FROM film ); -- 1-) TASK:film tablosunda film uzunluğu length sütununda gösterilmektedir. Uzunluğu ortalama film uzunluğundan fazla kaç tane film vardır?
+
+SELECT COUNT(*) FROM film WHERE rental_rate = (SELECT MAX(rental_rate) from film); -- 2-) TASK: film tablosunda en yüksek rental_rate değerine sahip kaç tane film vardır?
+
+SELECT title FROM film WHERE 
+rental_rate = (SELECT MIN(rental_rate) FROM film) AND
+replacement_cost= (SELECT MIN(replacement_cost) FROM film); -- 3-) TASK: film tablosunda en düşük rental_rate ve en düşün replacement_cost değerlerine sahip filmleri sıralayınız.
+
+SELECT
+    customer.customer_id,
+    customer.first_name,
+    customer.last_name,
+    COUNT(payment.payment_id) AS total_purchases
+FROM
+    customer
+INNER JOIN
+    payment ON customer.customer_id = payment.customer_id
+GROUP BY
+    customer.customer_id, customer.first_name, customer.last_name
+ORDER BY
+    total_purchases DESC; -- 4-) TASK: payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
